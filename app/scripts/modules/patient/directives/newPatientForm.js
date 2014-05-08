@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('kareWebAppApp').directive('editPatientForm', ['$timeout', '$cookies', 'viewsUrl', 'partialsUrl',
-	function ($timeout, $cookies, viewsUrl, partialsUrl) {
+angular.module('kareWebAppApp').directive('newPatientForm', ['$timeout', '$cookies', '$location', 'viewsUrl', 'partialsUrl',
+	function ($timeout, $cookies, $location, viewsUrl, partialsUrl) {
 		return {
 			restrict: 'EA',
 			scope: {},
@@ -9,16 +9,34 @@ angular.module('kareWebAppApp').directive('editPatientForm', ['$timeout', '$cook
 			controller: ['$scope', '$http',
 				function ($scope, $http) {
 
-					$scope.title = 'Add Patient';
-					$scope.subtitle = 'Add new patient.';
+					$scope.title = 'Create Patient';
+					$scope.subtitle = 'Create a new patient that can be added to assignments later';
+
+					$scope.patient = {
+						name: '',
+						email: '',
+						birthdate: ''
+					};
+
+					var search = $location.search();
+
+					if (search.populate === 'true') {
+						$scope.patient = {
+							name: 'Jane Doe',
+							email: 'sample@contoso.com',
+							birthdate: new Date()
+						};
+					}
 
 					$scope.submit = function () {
 
-						$http.post('/api/patients/', $scope.patient).
+						$http.post('http://localhost:9000/api/patients', $scope.patient).
 						success(function (data, status, headers, config) {
 							console.log(data);
 							console.log("callback received success")
-							$scope.addAlert('Patient saved successfully', 'success');
+							$scope.addAlert('Patient saved successfully', 'success', false, function () {
+								$location.path('/patient/edit/' + data._id);
+							});
 						}).
 						error(function (data, status, headers, config) {
 							console.log(data);
@@ -26,15 +44,17 @@ angular.module('kareWebAppApp').directive('editPatientForm', ['$timeout', '$cook
 							$scope.addAlert('Error while saving patient', 'danger');
 							for (var key in data.errors) {
 								var error = data.errors[key];
+								
 								$scope.addAlert(error.message, 'danger', true);
 							}
+
 						});
 
 					};
 
 					$scope.alerts = [];
 
-					$scope.addAlert = function (msg, type, permanant) {
+					$scope.addAlert = function (msg, type, permanant, callback) {
 						$scope.alerts.push({
 							msg: msg,
 							type: type
@@ -46,6 +66,10 @@ angular.module('kareWebAppApp').directive('editPatientForm', ['$timeout', '$cook
 							$timeout(function () {
 
 								$scope.closeAlert(index);
+
+								if (callback) {
+									callback();
+								}
 
 							}, 2000);
 						}
