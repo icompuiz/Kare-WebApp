@@ -7,6 +7,8 @@ var _ = require('lodash');
 var exercisesController = require('./controllers/exerciseController.js');
 var quizesController = require('./controllers/quizController.js');
 
+var patientsController = require('./controllers/patientController.js');
+
 var routes = [
 
 	// {
@@ -20,6 +22,12 @@ var routes = [
 		path: '/api/quizes',
 		resource: quizesController
 	},
+
+
+	{
+		path: '/api/patients',
+		resource: patientsController
+	}
 	// {
 	// 	path: '/api/instructions',
 	// 	resource: instructionsController
