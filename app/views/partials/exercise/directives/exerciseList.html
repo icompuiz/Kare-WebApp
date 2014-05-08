@@ -1,0 +1,55 @@
+<div class="alerts" ng-show="alerts.length > 0">
+  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+</div>
+<div class="page-heading">
+	<div class="page-title pull-left">
+		<span>Exercises</span>
+	</div>
+	<div class="btn-toolbar pull-right">
+		<div class="btn-group">
+			<a class="btn btn-default" href="/#/exercise/new">
+        		<span class="glyphicon glyphicon-asterisk"></span>
+				&nbsp;New Exercise
+			</a>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+<hr>
+<div class="list">
+	<div ng-repeat="exercise in exercises">
+		<div class="exercise">
+			<h3>{{exercise.name}}</h3>
+			<p ng-show="exercise.description">{{exercise.description}}</p>
+			<div class="exercise-stats">
+				<div>
+						<span class="text-muted">Steps: </span>
+						<a href="/#/exercise/edit/{{exercise._id}}#instructions"><span class="badge">{{exercise.instructions.length || 0}}</span></a>
+				</div>
+				<div>
+						<span class="text-muted">Follow up questions: </span>
+						<a href="/#/exercise/edit/{{exercise._id}}#quiz"><span class="badge">{{exercise.quiz.questions.length || 0}}</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="exercise-actions">
+			<div class="btn-toolbar pull-right">
+				<div class="btn-group">
+					<a class="btn btn-default" href="/#/exercise/edit/{{exercise._id}}">
+						Edit
+					</a>
+					<a class="btn btn-default" ng-click="removeExercise($index)">
+						Delete
+					</a>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+
+		</div>
+		<hr>
+	</div>
+	<div class="text-muted" ng-show="exercises.length ===0">
+		<h3>This list is empty. Click 'New Exercise' to a new exercise.</h3>
+	</div>
+
+</div>

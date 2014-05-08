@@ -1,0 +1,30 @@
+/** Alerts **/
+.alerts {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background: white;
+	z-index: 1000;
+	padding: 10px;
+	border-radius: 3px;
+	border: 1px solid #eee;
+	opacity: 0.7;
+	font-size: 0.85em;
+}
+
+.alerts:hover {
+	opacity: 1;
+}
+
+/** Exercises **/
+
+.exercise-list {
+
+}
+.exercise-form {
+	
+}
+
+.page-title {
+	font-size: 2em;
+}

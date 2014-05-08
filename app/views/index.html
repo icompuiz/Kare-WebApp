@@ -1,0 +1,201 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Kare Doctor Portal</title>
+
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="icon" href="images/visible-25.png" />
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css({.tmp,app}) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+</head>
+
+<body ng-app="kareWebAppApp">
+	<!--[if lt IE 7]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+	<nav class="navbar navbar-default navbar-static-top" role="navigation" ng-controller='NavigationCtrl'>
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="navbar-brand">
+					Kare Doctor Portal
+				</div>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="/#/">
+							<span class="glyphicon glyphicon-home"></span>
+							&nbsp;Home
+
+						</a>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								&nbsp;Exercises 
+								<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="/#/exercise">
+									<span class="glyphicon glyphicon-list"></span>
+									&nbsp;View Exercises
+								</a>
+							</li>
+							<li>
+								<a href="/#/exercise/new">
+									<span class="glyphicon glyphicon-asterisk"></span>
+									&nbsp;New Exercise
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								&nbsp;Patients 
+								<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="/#/">
+									<span class="glyphicon glyphicon-list"></span>
+									&nbsp;View Patients
+								</a>
+							</li>
+							<li>
+								<a href="/#/">
+									<span class="glyphicon glyphicon-asterisk"></span>
+									&nbsp;New Patient
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								&nbsp;Assignments 
+								<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="/#/">
+									<span class="glyphicon glyphicon-list"></span>
+									&nbsp;View Assigments
+								</a>
+							</li>
+							<li>
+								<a href="/#/">
+									<span class="glyphicon glyphicon-asterisk"></span>
+									&nbsp;New Assignment
+								</a>
+							</li>
+						</ul>
+					</li>
+
+
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="/#/">
+							<span class="glyphicon glyphicon-bell"></span>
+							&nbsp;Notifications
+							<span class="badge">3</span>
+						</a>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-user"></span>
+							&nbsp;Dr. John Doe <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="#">
+									<span class="glyphicon glyphicon-cog"></span>
+									&nbsp;&nbsp;Settings</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="glyphicon glyphicon-eye-open"></span>
+									&nbsp;About Kare
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="glyphicon glyphicon-off"></span>
+									&nbsp;Logout
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+	<!-- Add your site or application content here -->
+	<div class="container" ng-view=""></div>
+
+	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+
+
+	<!--[if lt IE 9]>
+		<script src="bower_components/es5-shim/es5-shim.js"></script>
+		<script src="bower_components/json3/lib/json3.min.js"></script>
+		<![endif]-->
+
+	<!-- build:js scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js({.tmp,app}) scripts/scripts.js -->
+	<script src="scripts/app.js"></script>
+	<script src='scripts/modules/navigation/controllers/navigationCtrl.js'></script>
+	<script src='scripts/modules/home/controllers/homeCtrl.js'></script>
+	<script src='scripts/modules/exercise/controllers/exerciseCtrl.js'></script>
+	<script src='scripts/modules/exercise/directives/newExerciseForm.js'></script>
+	<script src='scripts/modules/exercise/directives/exerciseList.js'></script>
+	<script src='scripts/modules/forms/directives/kareList.js'></script>
+	<!-- endbuild -->
+</body>
+
+</html>

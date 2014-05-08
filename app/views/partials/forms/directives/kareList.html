@@ -1,0 +1,20 @@
+<div class="well kare-list">
+    <button type="button" class="btn btn-default" ng-click="openNewItemModal()">Add New Item</button>
+    <hr>
+    <ul class="list-group">
+        <li class="list-group-item kare-list-item" ng-repeat="item in listItems">
+            <div class="list-item-content">
+                <h3 class="item-name">{{item.name}}</h3>
+                <p class="item-text text-muted">{{item.text}}</p>
+            </div>
+            <div class="list-item-actions">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-default edit-list-item" ng-click="editItem($index)">Edit</a>
+                    <a class="btn btn-default remove-list-item" ng-click="removeItem($index)">Remove</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </li>
+       
+    </ul>
+</div>
