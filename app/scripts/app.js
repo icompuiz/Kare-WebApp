@@ -34,6 +34,18 @@ angular
         templateUrl: partials + 'exercise/edit.html',
         controller: 'ExerciseCtrl'
       })
+      .when('/patient', {
+        templateUrl: partials + 'patient/list.html',
+        controller: 'PatientCtrl'
+      })
+      .when('/patient/new', {
+        templateUrl: partials + 'patient/create.html',
+        controller: 'PatientCtrl'
+      })
+      .when('/patient/edit/:patientId', {
+        templateUrl: partials + 'patient/edit.html',
+        controller: 'PatientCtrl'
+      })
       .otherwise({
         redirectTo: '/404'
       });
