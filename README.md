@@ -11,7 +11,6 @@ These instructions assume you are running Windows. For not Windows users the pat
 	- npm install -g yo
 5. Install angular-generator
 	- npm install -g generator-angular
-	- 
 	
 ### Double check that
 1. node is in your PATH
