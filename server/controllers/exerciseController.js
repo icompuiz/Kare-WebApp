@@ -84,8 +84,6 @@ resource.before('delete', function(req, res, next) {
 resource.before('post', function (req, res, cont) {
 
 
-
-
 	function saveQuiz(callback) {
 
 		req.body.quiz = new Quiz(req.body.quiz);

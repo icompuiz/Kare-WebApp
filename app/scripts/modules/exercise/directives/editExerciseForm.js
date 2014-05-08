@@ -14,8 +14,6 @@ angular.module('kareWebAppApp').directive('editExerciseForm', ['$timeout', '$coo
 					$scope.title = 'Edit Exercise';
 					$scope.subtitle = 'Modify this exercise.';
 
-
-
 					$scope.$watch('exerciseId', function (newVal) {
 						$http.get('/api/exercises/' + newVal).success(function (data) {
 							$scope.exercise = data;

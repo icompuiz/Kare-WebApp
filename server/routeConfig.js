@@ -50,7 +50,7 @@ var appRoutes = [{
 	middleware: function (req, res) {
 		res.render('index.html');
 	}
-}]
+}];
 
 
 module.exports = function (app) {
