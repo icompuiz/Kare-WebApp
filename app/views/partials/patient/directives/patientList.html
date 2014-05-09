@@ -20,8 +20,14 @@
 	<div ng-repeat="patient in patients">
 		<div class="patient">
 			<h3>{{patient.name}}</h3>
-			<p ng-show="patient.email">{{patient.email}}</p>
-			<p ng-show="patient.birthdate">{{patient.birthdate}}</p>
+			<div>
+				<span class="text-muted">email:</span>			
+				<span ng-show="patient.email">{{patient.email}}</span>
+			</div>
+			<div>
+				<span class="text-muted">birthdate:</span>			
+				<span ng-show="patient.birthdate">{{patient.birthdate | date: 'MMMM d, y' }}</span>
+			</div>
 		</div>
 		<div class="patient-actions">
 			<div class="btn-toolbar pull-right">
@@ -40,7 +46,7 @@
 		<hr>
 	</div>
 	<div class="text-muted" ng-show="patients.length ===0">
-		<h3>This list is empty. Click 'New Patient' to a new patient.</h3>
+		<h3>This list is empty. Click 'New Patient' to add new patient.</h3>
 	</div>
 
 </div>

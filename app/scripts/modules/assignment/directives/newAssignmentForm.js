@@ -1,47 +1,43 @@
 'use strict';
 
-angular.module('kareWebAppApp').directive('newPatientForm', ['$timeout', '$cookies', '$location', 'viewsUrl', 'partialsUrl',
+angular.module('kareWebAppApp').directive('newAssignmentForm', ['$timeout', '$cookies', '$location', 'viewsUrl', 'partialsUrl',
 	function ($timeout, $cookies, $location, viewsUrl, partialsUrl) {
 		return {
 			restrict: 'EA',
 			scope: {},
-			templateUrl: viewsUrl + partialsUrl + '/patient/directives/patient.html',
+			templateUrl: viewsUrl + partialsUrl + '/assignment/directives/assignment.html',
 			controller: ['$scope', '$http',
 				function ($scope, $http) {
 
-					$scope.title = 'Create Patient';
-					$scope.subtitle = 'Create a new patient that can be added to assignments later';
+					$scope.title = 'Create Assignment';
+					$scope.subtitle = 'Create a new assignment that can be added to assignments later';
 
-					$scope.patient = {
-						name: '',
-						email: '',
-						birthdate: ''
+					$scope.assignment = {
+						
 					};
 
 					var search = $location.search();
 
 					if (search.populate === 'true') {
-						$scope.patient = {
-							name: 'Jane Doe',
-							email: 'sample@contoso.com',
-							birthdate: moment().format('YYYY-MM-DD')
+						$scope.assignment = {
+							
 						};
 					}
 
 					$scope.submit = function () {
 
-						$http.post('/api/patients', $scope.patient).
+						$http.post('/api/assignments', $scope.assignment).
 						success(function (data, status, headers, config) {
 							console.log(data);
 							console.log("callback received success")
-							$scope.addAlert('Patient saved successfully', 'success', false, function () {
-								$location.path('/patient/edit/' + data._id);
+							$scope.addAlert('Assignment saved successfully', 'success', false, function () {
+								$location.path('/assignment/edit/' + data._id);
 							});
 						}).
 						error(function (data, status, headers, config) {
 							console.log(data);
 							console.log("callback received failure")
-							$scope.addAlert('Error while saving patient', 'danger');
+							$scope.addAlert('Error while saving assignment', 'danger');
 							for (var key in data.errors) {
 								var error = data.errors[key];
 								
@@ -80,9 +76,9 @@ angular.module('kareWebAppApp').directive('newPatientForm', ['$timeout', '$cooki
 						$scope.alerts.splice(index, 1);
 					};
 
-					if (undefined === $cookies.newPatientFormCookie) {
-						$scope.addAlert('Welcome to the new patient view. This is where alerts will appear. Click the x to dismiss.', 'success', true);
-						$cookies.newPatientFormCookie = true;
+					if (undefined === $cookies.newAssignmentFormCookie) {
+						$scope.addAlert('Welcome to the new assignment view. This is where alerts will appear. Click the x to dismiss.', 'success', true);
+						$cookies.newAssignmentFormCookie = true;
 
 					}
 				}

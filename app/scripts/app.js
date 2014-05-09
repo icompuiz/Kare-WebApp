@@ -46,6 +46,20 @@ angular
         templateUrl: partials + 'patient/edit.html',
         controller: 'PatientCtrl'
       })
+
+      .when('/assignment', {
+        templateUrl: partials + 'assignment/list.html',
+        controller: 'AssignmentCtrl'
+      })
+      .when('/assignment/new', {
+        templateUrl: partials + 'assignment/create.html',
+        controller: 'AssignmentCtrl'
+      })
+      .when('/assignment/edit/:assignmentId', {
+        templateUrl: partials + 'assignment/edit.html',
+        controller: 'AssignmentCtrl'
+      })
+
       .otherwise({
         redirectTo: '/404'
       });

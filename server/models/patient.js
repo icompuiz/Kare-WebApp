@@ -11,7 +11,7 @@ var patientSchema = new Schema({
 		required: true
 	},
 	birthdate: {
-		type: Date,
+		type: String,
 		required: true
 	}
 });
