@@ -9,7 +9,7 @@ angular.module('kareWebAppApp').directive('kareAssignmentList', ['$timeout','$ht
 
 			var assignmentUrl = '/api/assignments';
 
-			$http.get(assignmentUrl).success(function(data) {
+			$http.get(assignmentUrl + '?populate=patient').success(function(data) {
 				$scope.assignments = data;
 			});
 

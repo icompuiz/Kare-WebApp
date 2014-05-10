@@ -1,5 +1,5 @@
 <div class="alerts" ng-show="alerts.length > 0">
-  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 </div>
 
 <div class="page-heading">
@@ -15,20 +15,28 @@
 	<p class="text-muted">{{subtitle}}</p>
 </div>
 <hr>
-<label for="assignment-name">Assignment Name:</label>
-<p class="text-muted">Set the assignment's name.</p>
-<input type="text" class="form-control" name="assignment-name" ng-model="assignment.name" size="40"/>
+<div class="row">
+	<div class="col-md-12">
+		<label for="assignment-name">Assignment Name:</label>
+		<p class="text-muted">Set the assignment's name.</p>
+		<input type="text" class="form-control" name="assignment-name" ng-model="assignment.name" size="40" />
+	</div>
+</div>
 <hr>
 <div class="row">
-	<div class="col-md-6">
-		<label>Patient List</label>
-		<p class="text-muted">This is a list of all patients in the system.</p>
-		<div kare-item-list data-is-source="true" data-list-items="patientSource" data-other-list-items="assignment.patients" data-filter="filterAssignedPatients(item)"></div>
-	</div>
-	<div class="col-md-6">
-		<label>Assigned Patients</label>
-		<p class="text-muted">This is a list of patients who will get this assignment</p>
-		<div kare-item-list data-is-source="false" data-list-items="assignment.patients" data-other-list-items="patientSource"  data-filter="dummyFilter(item)"></div>
+	<div class="col-md-12">
+		<label>Patient</label>
+		<p class="text-muted">This assignment has been assigned to.</p>
+		<h4>{{assignment.patient.name}}</h4>
+		<div class="patient-actions">
+			<div class="btn-toolbar pull-right">
+				<div class="btn-group">
+					<a class="btn btn-default" href="/#/patient/edit/{{assignment.patient._id}}">
+						Edit Patient
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 <hr>
@@ -48,4 +56,3 @@
 		<div kare-item-list data-is-source="false" data-list-items="assignment.exercises" data-other-list-items="exercisesSource"  data-filter="dummyFilter(item)"></div>
 	</div>
 </div>
-

@@ -7,28 +7,63 @@ angular.module('kareWebAppApp').directive('editAssignmentForm', ['$timeout', '$c
 			scope: {
 				assignmentId: '='
 			},
-			templateUrl: viewsUrl + partialsUrl + '/assignment/directives/assignment.html',
+			templateUrl: viewsUrl + partialsUrl + '/assignment/directives/editAssignment.html',
 			controller: ['$scope', '$http',
 				function ($scope, $http) {
 
 					$scope.title = 'Edit Assignment';
 					$scope.subtitle = 'Modify this assignment.';
 
-
+					$scope.assignment = {
+						name: '',
+						patients: [],
+						exercises: []
+					};
 
 					$scope.$watch('assignmentId', function (newVal) {
-						$http.get('/api/assignments/' + newVal).success(function (data) {
-							$scope.assignment = data;
-						});
+						function getPatients(doneGettingPatients) {
+							$http.get('/api/patients').success(function (data) {
+								$scope.patientSource = data;
+								doneGettingPatients();
+							});
+
+						}
+
+						function getExercises(doneGettingExercises) {
+							$http.get('/api/exercises').success(function (data) {
+								$scope.exercisesSource = data;
+								doneGettingExercises();
+
+							});
+						}
+
+						function getAssignment(doneGettingAssignment) {
+							$http.get('/api/assignments/' + newVal + '?populate=patient%20exercises').success(function (data) {
+								$scope.assignment = data;
+								doneGettingAssignment();
+							});
+
+						}
+
+						async.series([getPatients, getExercises, getAssignment], function() {});
+
 					});
 
 					$scope.submit = function () {
 
-						$http.put('/api/assignments/' + $scope.assignmentId, $scope.assignment).
+						var assignment = _.clone($scope.assignment);
+
+						assignment.patient = assignment.patient._id;
+
+						assignment.exercises = _.map(assignment.exercises, function (exercise) {
+							return exercise._id;
+						});
+
+						$http.put('/api/assignments/' + assignment._id, assignment).
 						success(function (data, status, headers, config) {
 							console.log(data);
 							console.log("callback received success")
-							$scope.addAlert('Assignment saved successfully', 'success');
+							$scope.addAlert('Assignment saved successfully', 'success', false);
 						}).
 						error(function (data, status, headers, config) {
 							console.log(data);
@@ -36,9 +71,36 @@ angular.module('kareWebAppApp').directive('editAssignmentForm', ['$timeout', '$c
 							$scope.addAlert('Error while saving assignment', 'danger');
 							for (var key in data.errors) {
 								var error = data.errors[key];
-								$scope.addAlert(error.message, 'danger', true);
+
+								$scope.addAlert(error.message, 'danger', false);
 							}
+
 						});
+
+						
+
+					};
+
+					$scope.dummyFilter = function () {
+
+						return true;
+					};
+
+					$scope.filterAssignedExercises = function (exercise) {
+
+						var arrayOfMatches = _.filter($scope.assignment.exercises, function (item) {
+							var match = exercise._id === item._id
+							
+							if (match) {
+								console.log('Excluding', item.name, 'from list');
+							} else {
+								console.log('Including', item.name, 'from list');
+							}
+
+							return match;
+						});
+
+						return arrayOfMatches.length === 0;
 
 					};
 

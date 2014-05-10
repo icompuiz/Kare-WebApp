@@ -20,7 +20,9 @@
 	<div ng-repeat="assignment in assignments">
 		<div class="assignment">
 			<h3>{{assignment.name}}</h3>
-			<div p>
+			<div>
+				<span class="text-muted">Assigned to:</span>			
+				<a title="View patient profile" href="/#/patient/edit/{{assignment.patient._id}}" ng-show="assignment.patient">{{assignment.patient.name}}</a>
 			</div>
 			<div p>
 			</div>

@@ -1,0 +1,16 @@
+<div class="well kare-list">
+    <ul class="list-group">
+        <li class="list-group-item kare-item-list-item" ng-repeat="item in listItems | filter: filterList">
+            <div class="list-item-content">
+                <h3 class="item-name">{{item.name}}</h3>
+            </div>
+            <div class="list-item-actions">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-default add-list-item" ng-click="moveItem(item)">{{ isSource ? "Add" : "Remove"}}</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </li>
+       
+    </ul>
+</div>
