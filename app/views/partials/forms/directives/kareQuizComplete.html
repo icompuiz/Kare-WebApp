@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h3 class="modal-title">Complete Quiz: {{item.quizName}}</h3>
+</div>
+<div class="modal-body">
+	<form ng-submit="ok()" role="form" class="form">
+		<div class="form-group" ng-repeat="question in item.quizQuestions">
+			<label for='itemText'>{{question.text}}</label>
+		    <input type="text" class="form-control" ng-model="item.response[question._id]" name="{{question._id}}">
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
