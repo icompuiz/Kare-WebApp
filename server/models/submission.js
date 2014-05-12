@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 var SubmissionResponse = require('./SubmissionResponse.js');
 
 var submissionSchema = new Schema({
-	patientId: { type: Number, required: true },
-	assignmentId: { type: Number, required: true },
+	patientId: { type: String, required: true },
+	assignmentId: { type: String, required: true },
 	responses: [ SubmissionResponse ]
 });
 
