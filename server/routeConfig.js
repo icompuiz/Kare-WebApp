@@ -10,6 +10,8 @@ var quizesController = require('./controllers/quizController.js');
 var patientsController = require('./controllers/patientController.js');
 var assignmentsController = require('./controllers/assignmentController.js');
 
+var submissionsController = require('./controllers/submissionController.js');
+
 var routes = [
 
 	// {
@@ -34,6 +36,11 @@ var routes = [
 	{
 		path: '/api/assignments',
 		resource: assignmentsController
+	},
+
+	{
+		path: '/api/submissions',
+		resource: submissionsController
 	}
 	// {
 	// 	path: '/api/instructions',
