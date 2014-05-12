@@ -1,0 +1,28 @@
+<div class="alerts" ng-show="alerts.length > 0">
+  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+</div>
+
+<div class="page-heading">
+	<div class="page-title pull-left">
+		<span>{{title}}</span>
+	</div>
+	<div class="btn-toolbar pull-right">
+		<div class="btn-group">
+			<div class="btn btn-default" ng-click="submit()">Save Patient</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<p class="text-muted">{{subtitle}}</p>
+</div>
+<hr>
+<label for="patient-name">Patient Name:</label>
+<p class="text-muted">Set the patient's name.</p>
+<input type="text" class="form-control" name="patient-name" ng-model="patient.name" size="40"/>
+<hr>
+<label id="patient-email" for="patient-email">Email:</label>
+<p class="text-muted">Set the patient's email.</p>
+<input type="email" class="form-control" name="patient-email" ng-model="patient.email" size="40"/>
+<hr>
+<label id="patient-birthdate" for="patient-birthdate">Birthdate:</label>
+<p class="text-muted">Set the patient's date of birth.</p>
+<input type="date" class="form-control" name="patient-birthdate" ng-model="patient.birthdate" size="40"/>

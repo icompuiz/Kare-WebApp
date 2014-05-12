@@ -1,0 +1,47 @@
+<div class="alerts" ng-show="alerts.length > 0">
+  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+</div>
+
+<div class="text-muted" ng-show="assignment != null && alreadyCompleted == false">
+	<div class="page-heading">
+		<div class="page-title pull-left">
+			<span>Complete Assignment</span>
+		</div>
+		<div class="btn-toolbar pull-right">
+			<div class="btn-group">
+				<div class="btn btn-default" ng-click="submit()">Save Responses</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<p class="text-muted">{{subtitleAssignment}} (Patient: {{subtitlePatient}})</p>
+	</div>
+	<hr>
+
+	<div class="list">
+
+		<div ng-repeat="exercise in exercises">
+			<div class="exercise">
+				<h3>{{exercise.name}}</h3>
+				<div ng-repeat="instruction in exercise.instructions">
+					<div class="instruction">
+					<strong>{{instruction.name}}</strong>: {{instruction.text}}
+					</div>
+				</div>
+				<div kare-quiz data-quiz-id='exercise.quiz' data-responses='responses'></div>
+			</div>
+			<hr>
+		</div>
+
+
+	</div>
+
+
+</div>
+
+<div class="text-muted" ng-show="assignment == null && alreadyCompleted == false">
+	<h3>No assignment exists for this patient with the specified assignment ID.</h3>
+</div>
+
+<div class="text-muted" ng-show="alreadyCompleted == true">
+	<h3>This assignment has already been completed.</h3>
+</div>

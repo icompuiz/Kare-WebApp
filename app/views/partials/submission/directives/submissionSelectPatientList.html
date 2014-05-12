@@ -1,0 +1,41 @@
+<div class="alerts" ng-show="alerts.length > 0">
+  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+</div>
+<div class="page-heading">
+	<div class="page-title pull-left">
+		<span>Submissions - Select Demo Patient</span>
+	</div>
+	<div class="clearfix"></div>
+</div>
+<hr>
+<div class="list">
+	<div ng-repeat="patientEle in patientsList">
+		<div class="submission">
+			<h3>{{patientEle.name}}</h3>
+			<div>
+				<span class="text-muted">email:</span>			
+				<span ng-show="submission.email">{{patientEle.email}}</span>
+			</div>
+			<div>
+				<span class="text-muted">birthdate:</span>			
+				<span ng-show="submission.birthdate">{{patientEle.birthdate | date: 'MMMM d, y' }}</span>
+			</div>
+		</div>
+		<div class="submission-actions">
+			<div class="btn-toolbar pull-right">
+				<div class="btn-group">
+					<a class="btn btn-default" href="/#/submission/{{patientEle._id}}">
+						Demo Me!
+					</a>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+
+		</div>
+		<hr>
+	</div>
+	<div class="text-muted" ng-show="submissions.length ===0">
+		<h3>This list is empty. Click 'New Patient' from the Patients dropdown to first add a Patient.</h3>
+	</div>
+
+</div>
