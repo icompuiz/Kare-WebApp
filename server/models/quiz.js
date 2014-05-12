@@ -7,7 +7,11 @@ var quizSchema = new Schema({
 		type: String,
 		required: true
 	},
-	questions: [QuizQuestion]
+	questions: [QuizQuestion],
+	created: {
+		type: Date,
+		default: Date.now
+	}
 });
 
 var quiz = module.exports = mongoose.model('Quiz', quizSchema);

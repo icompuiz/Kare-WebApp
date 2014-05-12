@@ -11,6 +11,10 @@ var exerciseSchema = new Schema({
 	quiz: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Quiz'
+	},
+	created: {
+		type: Date,
+		default: Date.now
 	}
 });
 

@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h3 class="modal-title">Complete Exercise</h3>
+</div>
+<div class="modal-body">
+	<div class="row">
+		<div class="col-md-12">
+			
+			<label>Exercise Name:</label>
+			<h3>{{exercise.name}}</h3>
+		</div>
+	</div>
+	<hr>
+	<div class="row submit-exercise-instructions">
+		<div class="col-md-12">
+			<label>Instructions:</label>
+		</div>
+		<div class="submit-exercise-instruction col-md-12" ng-repeat="instruction in exercise.instructions">
+			<h4>{{ $index + 1}}) {{instruction.name}}</h4>
+			<p>{{instruction.text}}</p>
+		</div>
+	</div>
+	<hr>
+	<div class="row submit-exercise-quiz">
+	<div class="col-md-12">
+			<label>Follow Up Questions:</label>
+		</div>
+		<div class="submit-exercise-quiz-question col-md-12" ng-repeat="question in exercise.quiz.questions">
+			<h4>{{ $index + 1}}) {{question.name}}</h4>
+			<p>{{question.text}}</p>
+			<div class="form-group">
+				<label for="question_{{question._id}}"></label>
+				<input type="text" ng-model="question.value" name="question_{{question._id}}" class="form-control" />
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

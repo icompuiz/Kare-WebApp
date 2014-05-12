@@ -13,7 +13,11 @@ var assignmentSchema = new Schema({
 	exercises: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Exercise'
-	}]
+	}],
+	created: {
+		type: Date,
+		default: Date.now
+	}
 });
 
 var assignment = module.exports = mongoose.model('Assignment', assignmentSchema);

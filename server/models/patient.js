@@ -13,6 +13,10 @@ var patientSchema = new Schema({
 	birthdate: {
 		type: String,
 		required: true
+	},
+	created: {
+		type: Date,
+		default: Date.now
 	}
 });
 

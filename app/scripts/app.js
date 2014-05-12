@@ -10,11 +10,11 @@ angular
   ])
   .value('viewsUrl', 'views/')
   .value('partialsUrl', 'partials/')
-  .config(function ($routeProvider) {
+  .config(function($routeProvider) {
 
     var views = 'views/';
     var partials = views + 'partials/';
-   $routeProvider
+    $routeProvider
       .when('/404', {
         templateUrl: views + '404.html'
       })
@@ -47,10 +47,10 @@ angular
         controller: 'PatientCtrl'
       })
 
-      .when('/assignment', {
-        templateUrl: partials + 'assignment/list.html',
-        controller: 'AssignmentCtrl'
-      })
+    .when('/assignment', {
+      templateUrl: partials + 'assignment/list.html',
+      controller: 'AssignmentCtrl'
+    })
       .when('/assignment/new', {
         templateUrl: partials + 'assignment/create.html',
         controller: 'AssignmentCtrl'
@@ -59,26 +59,40 @@ angular
         templateUrl: partials + 'assignment/edit.html',
         controller: 'AssignmentCtrl'
       })
+      .when('/assignment/:assignmentId/do', {
+        templateUrl: partials + 'assignment/do.html',
+        controller: 'AssignmentCtrl'
 
-      .when('/submission', {
-        templateUrl: partials + 'submission/patientList.html',
+      })
+      .when('/assignment/:assignmentId/submissions', {
+        templateUrl: partials + 'assignment/submission/list.html',
+        controller: 'SubmissionCtrl'
+      })
+      .when('/assignment/:assignmentId/submissions/:submissionId', {
+        templateUrl: partials + 'assignment/submission/edit.html',
         controller: 'SubmissionCtrl'
       })
 
-      .when('/submission/:patientId', {
-        templateUrl: partials + 'submission/assignmentList.html',
-        controller: 'SubmissionCtrl'
-      })
 
-      .when('/submission/:patientId/:assignmentId', {
-        templateUrl: partials + 'submission/completeAssignment.html',
-        controller: 'SubmissionCtrl'
-      })
+    // .when('/submission', {
+    //   templateUrl: partials + 'submission/submissionList.html',
+    //   controller: 'SubmissionCtrl'
+    // })
 
-      .otherwise({
-        redirectTo: '/404'
-      });
-  }).run(['$rootScope', '$location','$route','$interval',
+    // .when('/submission/:patientId', {
+    //   templateUrl: partials + 'submission/assignmentList.html',
+    //   controller: 'SubmissionCtrl'
+    // })
+
+    // .when('/submission/:patientId/:assignmentId', {
+    //   templateUrl: partials + 'submission/completeAssignment.html',
+    //   controller: 'SubmissionCtrl'
+    // })
+
+    .otherwise({
+      redirectTo: '/404'
+    });
+  }).run(['$rootScope', '$location', '$route', '$interval',
     function($rootScope, $location, $route, $interval) {
 
 
@@ -100,7 +114,7 @@ angular
         }, interval);
 
       }
-      
+
 
     }
   ]);
