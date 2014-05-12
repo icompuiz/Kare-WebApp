@@ -60,6 +60,21 @@ angular
         controller: 'AssignmentCtrl'
       })
 
+      .when('/submission', {
+        templateUrl: partials + 'submission/patientList.html',
+        controller: 'SubmissionCtrl'
+      })
+
+      .when('/submission/:patientId', {
+        templateUrl: partials + 'submission/assignmentList.html',
+        controller: 'SubmissionCtrl'
+      })
+
+      .when('/submission/:patientId/:assignmentId', {
+        templateUrl: partials + 'submission/completeAssignment.html',
+        controller: 'SubmissionCtrl'
+      })
+
       .otherwise({
         redirectTo: '/404'
       });

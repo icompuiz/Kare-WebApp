@@ -51,6 +51,8 @@ angular.module('kareWebAppApp').directive('kareList', ['$modal','$log','viewsUrl
 
 			};
 
+
+
 			$scope.removeItem = function(index) {
 				$scope.listItems.splice(index, 1);
 			}
@@ -59,6 +61,8 @@ angular.module('kareWebAppApp').directive('kareList', ['$modal','$log','viewsUrl
 
 		}
 	}
+
+
 }]).controller('AddKareListItemCtrl', ['$scope','$modalInstance', function($scope, $modalInstance) {
 
 
