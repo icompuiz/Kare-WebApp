@@ -42,7 +42,7 @@ angular.module('kareWebAppApp').directive('newExerciseForm', ['$timeout', '$cook
 					}
 					$scope.submit = function () {
 
-						$http.post('http://localhost:9000/api/exercises', $scope.exercise).
+						$http.post('/api/exercises', $scope.exercise).
 						success(function (data, status, headers, config) {
 							console.log(data);
 							console.log("callback received success")

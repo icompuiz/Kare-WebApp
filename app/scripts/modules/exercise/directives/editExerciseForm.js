@@ -35,7 +35,7 @@ angular.module('kareWebAppApp').directive('editExerciseForm', ['$timeout', '$coo
 						};
 
 
-						$http.put('http://localhost:9000/api/exercises/' + $scope.exerciseId, data).
+						$http.put('/api/exercises/' + $scope.exerciseId, data).
 						success(function (data, status, headers, config) {
 							console.log(data);
 							console.log("callback received success")
