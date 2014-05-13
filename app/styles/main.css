@@ -26,5 +26,10 @@
 }
 
 .page-title {
-	font-size: 2em;
+  font-size: 2em;
+}
+
+.site-title {
+  font-family: 'Pacifico';
+  font-size: 2em;
 }
