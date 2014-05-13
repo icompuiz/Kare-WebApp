@@ -378,9 +378,9 @@ module.exports = function (grunt) {
 
 
   grunt.registerTask('serve', function (target) {
-    // if (target === 'dist') {
-    //   return grunt.task.run(['build', 'express','connect:dist:keepalive']);
-    // }
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'express:dev','connect:dist:keepalive']);
+    }
 
     grunt.task.run([
       'clean:server',
